@@ -115,7 +115,7 @@ class sectionfeedback {
      * @param object $record
      */
     protected function loadproperties($record) {
-        foreach ($this as $property => $value){
+        foreach ($this as $property => $value) {
             if (isset($record->$property)) {
                 $this->$property = $record->$property;
             }
