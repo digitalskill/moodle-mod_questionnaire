@@ -2594,6 +2594,11 @@ class questionnaire {
         }
 
         $allresponsessql .= " ORDER BY usrid, id";
+
+        // Correct collate issue for INT field in UNION SQL.
+        $allresponsessql = str_ireplace('qrb.choice_id AS response',
+            'qrb.choice_id COLLATE utf8_unicode_ci AS response', $allresponsessql);
+
         $allresponses = $DB->get_recordset_sql($allresponsessql, $allresponsesparams);
         return $allresponses;
     }
